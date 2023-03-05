@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: darkorange;
+
+}
+
+.products {
+    display: grid;
+    grid-template-columns:(200px 1fr 1fr 1fr );
+    background-color: brown;
+    /* display: flex;
+    flex-wrap: wrap; */
+
+}
+
+/* .product {
+    background-color: brown;
+    display: flex;
+    flex-wrap: wrap;
+    } */
+
+/* img{
+width: 100%;
+display: block;
+background-color: aqua;
+} */
