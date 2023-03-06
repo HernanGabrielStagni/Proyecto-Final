@@ -3,27 +3,25 @@
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: darkorange;
+    /* background-color: darkorange; */
 
 }
 
 .products {
-    display: grid;
-    grid-template-columns:(200px 1fr 1fr 1fr );
-    background-color: brown;
-    /* display: flex;
-    flex-wrap: wrap; */
+    
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));   
+    
+    }
 
-}
-
-/* .product {
-    background-color: brown;
-    display: flex;
+ .product {
+    
+    display: flex; 
     flex-wrap: wrap;
-    } */
+    } 
 
-/* img{
+img{
 width: 100%;
 display: block;
-background-color: aqua;
-} */
+/* background-color: aqua; */
+}

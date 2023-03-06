@@ -74,15 +74,15 @@ const products=[
                 <div producto__info>
                     <h2>Precio: $_${product.price}</h2>
                     <h2>${product.quantity}</h2>
-                    <i class='bx bx-plus' id='${product.id}'></i>
-                    <h2>Producto${product.name}</h2>
+                  
+                   <h2>Producto${product.name}</h2>
                 </div>
                                          
             </div> `;
          return prod;
       } 
      
-      
+      //<i class='bx bx-plus' id='${product.id}'></i>
      function printVariosProducts(products){
             const dataHTML=document.querySelector(".products");
             
