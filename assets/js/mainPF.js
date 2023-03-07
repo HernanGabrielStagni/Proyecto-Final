@@ -1,66 +1,62 @@
-const products=[
-    {
-    id:1,
-    name:"Camiseta de manga corta con cuello redondo",
-    price:10,
-    image:"https://res.cloudinary.com/duu1imwxs/image/upload/v1677270464/eCommerce/shirt1_prckre.png",
-    category:"shirt",
-    quantity:5,
-    description:"Esta camiseta básica presenta un corte regular y un cuello redondo clásico. Es ideal para el uso diario y se puede combinar con una amplia variedad de looks."
-},
-{
-    id:2,
-    name:"Camiseta de manga larga con estampado gráfico",
-    price:15,
-    image:"https://academlostorev1.netlify.app/images/sweater2.png",//es la principal
-    // image:"https://res.cloudinary.com/duu1imwxs/image/upload/v1677270464/eCommerce/shirt2_av4jld.png",
-    // image:"https://res.cloudinary.com/duu1imwxs/image/upload/v1677270464eCommerce/shirt2_av4jld.png",
-    category:"shirt",
-    quantity:3,
-    description:"Perfecta para un look casual, esta camiseta de manga largapresenta un estampado gráfico llamativo en el pecho. Su ajuste regular ysuave tejido de algodón la hacen cómoda y fácil de usar."
-},
-{
-    id:1,
-    name:"Camiseta de manga corta con cuello redondo",
-    price:10,
-    image:"https://res.cloudinary.com/duu1imwxs/image/upload/v1677270464/eCommerce/shirt1_prckre.png",
-    category:"shirt",
-    quantity:5,
-    description:"Esta camiseta básica presenta un corte regular y un cuello redondo clásico. Es ideal para el uso diario y se puede combinar con una amplia variedad de looks."
-},
-{
-    id:2,
-    name:"Camiseta de manga larga con estampado gráfico",
-    price:15,
-    image:"https://academlostorev1.netlify.app/images/sweater2.png",//es la principal
-    // image:"https://res.cloudinary.com/duu1imwxs/image/upload/v1677270464/eCommerce/shirt2_av4jld.png",
-    // image:"https://res.cloudinary.com/duu1imwxs/image/upload/v1677270464eCommerce/shirt2_av4jld.png",
-    category:"shirt",
-    quantity:3,
-    description:"Perfecta para un look casual, esta camiseta de manga largapresenta un estampado gráfico llamativo en el pecho. Su ajuste regular ysuave tejido de algodón la hacen cómoda y fácil de usar."
-},{
-    id:1,
-    name:"Camiseta de manga corta con cuello redondo",
-    price:10,
-    image:"https://res.cloudinary.com/duu1imwxs/image/upload/v1677270464/eCommerce/shirt1_prckre.png",
-    category:"shirt",
-    quantity:5,
-    description:"Esta camiseta básica presenta un corte regular y un cuello redondo clásico. Es ideal para el uso diario y se puede combinar con una amplia variedad de looks."
-},
-{
-    id:2,
-    name:"Camiseta de manga larga con estampado gráfico",
-    price:15,
-    image:"https://academlostorev1.netlify.app/images/sweater2.png",//es la principal
-    // image:"https://res.cloudinary.com/duu1imwxs/image/upload/v1677270464/eCommerce/shirt2_av4jld.png",
-    // image:"https://res.cloudinary.com/duu1imwxs/image/upload/v1677270464eCommerce/shirt2_av4jld.png",
-    category:"shirt",
-    quantity:3,
-    description:"Perfecta para un look casual, esta camiseta de manga largapresenta un estampado gráfico llamativo en el pecho. Su ajuste regular ysuave tejido de algodón la hacen cómoda y fácil de usar."
-}
-];
-        
 
+async function getProducts(){
+    
+    try{
+
+        const data =await fetch(
+            "https://ecommercebackend.fundamentos-29.repl.co/");
+
+        const res= await data.json();
+            console.log(res);
+            return res;
+
+    
+    }catch(error){
+        console.log(error);
+       }
+     
+}
+
+
+//una forma es TextEncoderStream. pero tiene que estar elo type modele
+//const res=await getProducts(); //para usar el await el script tiene que tener el type:module
+
+//console.log(res);
+
+//Otra forma
+
+//creo una funcion main que me llama la funcion que me trae la data y me arranca el cpodigo de forma asyncrona
+
+// // // // async function main(){
+// // // //     const res= JSON.parse(window.localStorage.getItem('products'))
+// // // //    || (await getProducts());
+// // // //     console.log(res);
+// // // // }
+
+//llamo a la funcion y hace todo
+
+// // // // main();
+
+
+
+//LARGAMOS CON EL ALGORITMO*************************************************************
+//******************************************************************* */
+
+// // // // // MEJOE CREO UN OBJETO CON DOS CAMPOS
+
+ 
+async function main(){
+
+        const db ={
+            products:JSON.parse(window.localStorage.getItem('products')) ||
+                    (await getProducts()),
+            cart:{}
+        };
+        // console.log(db.products);
+        /*printVariosProducts(db);*/
+}
+
+main();
 
         
         
@@ -71,13 +67,13 @@ const products=[
                    <img src="${product.image}" alt=""></img>
                 </div>
             
-                <div producto__info>
-                    <h2>Precio: $_${product.price}</h2>
-                    <h2>${product.quantity}</h2>
+                <div class="producto__info">
+                    <h2 class="precio">$${product.price}</h2>
+                    <h2>Stock: ${product.quantity}</h2>
                   
-                   <h2>Producto${product.name}</h2>
+                   <h3><span> ${product.name}</span> </h3>
                 </div>
-                                         
+               
             </div> `;
          return prod;
       } 
@@ -87,7 +83,7 @@ const products=[
             const dataHTML=document.querySelector(".products");
             
             let html="";
-            for (const prod of products){
+            for (const prod of products.products){
                 html+=printProduct(prod);
               } 
              
@@ -97,6 +93,6 @@ const products=[
      
      
 
-printVariosProducts(products);
 
-// console.log(usuario[0]);
+
+// // console.log(usuario[0]);
